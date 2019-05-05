@@ -16,19 +16,19 @@ pipeline {
                 stage('First Build') {
                     build job: 'Experimental_Parameterized_Job',
                             parameters: [
-                                    string(name: 'MVN_STRING', value: "First Build")
+                                    string(name: 'MVN_STRING', value: """mvn test -Dparam="First Build" -Dtest=PrintParamTests""")
                             ]
                 }
                 stage('Second Build') {
                     build job: 'Experimental_Parameterized_Job',
                             parameters: [
-                                    string(name: 'MVN_STRING', value: "Second Build")
+                                    string(name: 'MVN_STRING', value: """mvn test -Dparam="Second Build" -Dtest=PrintParamTests""")
                             ]
                 }
                 stage('Third Build') {
                     build job: 'Experimental_Parameterized_Job',
                             parameters: [
-                                    string(name: 'MVN_STRING', value: "Third Build")
+                                    string(name: 'MVN_STRING', value: """mvn test -Dparam="Third Build" -Dtest=PrintParamTests""")
                             ]
                 }
             }
