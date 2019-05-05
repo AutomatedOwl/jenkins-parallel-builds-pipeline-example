@@ -1,4 +1,4 @@
-def MVN_COMMAND = "mvn test -Dtest-parameter=TBD -Dtest=PrintParamTests"
+def MVN_COMMAND = """mvn test -Dtest-parameter="TBD" -Dtest=PrintParamTests"""
 
 pipeline {
     agent {
