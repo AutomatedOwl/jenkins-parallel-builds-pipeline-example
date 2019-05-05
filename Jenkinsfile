@@ -1,3 +1,5 @@
+def MVN_COMMAND = "mvn test -Dtest-parameter=TBD -Dtest=PrintParamTests"
+
 pipeline {
     agent {
         kubernetes {
@@ -17,7 +19,8 @@ pipeline {
                     steps {
                         build job: 'Experimental_Parameterized_Job',
                                 parameters: [
-                                        string(name: 'MVN_STRING', value: """mvn test -Dtest-parameter="First Build" -Dtest=PrintParamTests""")
+                                        string(name: 'MVN_STRING', 
+                                                value: MVN_COMMAND.replaceFirst("TBD", "First Build"))
                                 ]
                     }
                 }
@@ -25,7 +28,8 @@ pipeline {
                     steps {
                         build job: 'Experimental_Parameterized_Job',
                                 parameters: [
-                                        string(name: 'MVN_STRING', value: """mvn test -Dtest-parameter="Second Build" -Dtest=PrintParamTests""")
+                                        string(name: 'MVN_STRING', 
+                                                value: MVN_COMMAND.replaceFirst("TBD", "Second Build"))
                                 ]
                     }
                 }
@@ -33,7 +37,8 @@ pipeline {
                     steps {
                         build job: 'Experimental_Parameterized_Job',
                                 parameters: [
-                                        string(name: 'MVN_STRING', value: """mvn test -Dtest-parameter="Third Build" -Dtest=PrintParamTests""")
+                                        string(name: 'MVN_STRING', 
+                                                value: MVN_COMMAND.replaceFirst("TBD", "Third Build"))
                                 ]
                     }
                 }
