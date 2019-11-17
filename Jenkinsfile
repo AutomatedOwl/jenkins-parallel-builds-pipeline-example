@@ -1,5 +1,3 @@
-def MVN_COMMAND = """mvn test -Dtest-parameter="TBD" -Dtest=PrintParamTests"""
-
 pipeline {
     agent {
         kubernetes {
@@ -17,28 +15,46 @@ pipeline {
             parallel {
                 stage('First Build') {
                     steps {
-                        build job: 'Experimental_Parameterized_Job',
+                        build job: 'Parameterized_NodeJS_Test',
                                 parameters: [
-                                        string(name: 'MVN_STRING', 
-                                                value: MVN_COMMAND.replaceFirst("TBD", "First Build"))
+                                        string(name: 'INPUT_TEXT', 
+                                                value: "'Hello First Build'")
                                 ]
                     }
                 }
                 stage('Second Build') {
                     steps {
-                        build job: 'Experimental_Parameterized_Job',
+                        build job: 'Parameterized_NodeJS_Test',
                                 parameters: [
-                                        string(name: 'MVN_STRING', 
-                                                value: MVN_COMMAND.replaceFirst("TBD", "Second Build"))
+                                        string(name: 'INPUT_TEXT', 
+                                                value: "'Hello Secondd Build'")
                                 ]
                     }
                 }
                 stage('Third Build') {
                     steps {
-                        build job: 'Experimental_Parameterized_Job',
+                        build job: 'Parameterized_NodeJS_Test',
                                 parameters: [
-                                        string(name: 'MVN_STRING', 
-                                                value: MVN_COMMAND.replaceFirst("TBD", "Third Build"))
+                                        string(name: 'INPUT_TEXT', 
+                                                value: "'Hello Third Build'")
+                                ]
+                    }
+                }
+                stage('Fourth Build') {
+                    steps {
+                        build job: 'Parameterized_NodeJS_Test',
+                                parameters: [
+                                        string(name: 'INPUT_TEXT',
+                                                value: "'Hello Fourth Build'")
+                                ]
+                    }
+                }
+                stage('Fifth Build') {
+                    steps {
+                        build job: 'Parameterized_NodeJS_Test',
+                                parameters: [
+                                        string(name: 'INPUT_TEXT',
+                                                value: "'Hello Fifth Build'")
                                 ]
                     }
                 }
