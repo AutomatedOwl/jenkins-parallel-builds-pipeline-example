@@ -27,7 +27,7 @@ pipeline {
                         build job: 'Parameterized_NodeJS_Test',
                                 parameters: [
                                         string(name: 'INPUT_TEXT', 
-                                                value: "'Hello Secondd Build'")
+                                                value: "'Hello Second Build'")
                                 ]
                     }
                 }
